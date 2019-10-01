@@ -1,0 +1,171 @@
+@import 'colors';
+
+.top-nav {
+  background-color: $backgroundColor;
+  overflow: hidden;
+
+  a {
+    float: left;
+    display: block;
+    color: $color;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  a:hover {
+    background-color: $hover;
+    color: $color;
+  }
+
+  a.active {
+    background-color: $active;
+    color: $color;
+  }
+
+  .search-section {
+    float: right;
+    margin-top: 8px;
+    margin-right: 16px;
+
+    .search-navbar {
+      padding: 6px;
+      border: none;
+      font-size: 17px;
+    }
+
+    .btn-search-navbar {
+      padding: 6px;
+      border: none;
+      color: white;
+      font-size: 17px;
+      opacity: $btnOpacity;
+      background-color: $buttonColor;
+    }
+
+    .btn-search-navbar:hover {
+      opacity: $btnOpacityHover;
+    }
+  }
+}
+
+.drop-down {
+  float: left;
+  overflow: hidden;
+  margin: 0;
+
+  a {
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: $color;
+    padding: 14px 16px;
+    background-color: $backgroundColor;
+  }
+
+  a:hover {
+    background-color: $hover;
+    cursor: pointer;
+  }
+}
+
+.drop-down-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  margin-top: 46px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0,0, 0.2);
+  z-index: 1;
+
+  a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    text-align: left;
+  }
+
+  a:hover {
+    background-color: $hover;
+  }
+}
+
+.drop-down:hover .drop-down-content {
+  display: block;
+}
+
+.responsive-menu {
+  a {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .top-nav {
+    background-color: $backgroundColor;
+    overflow: hidden;
+    a {
+      display: none;
+    }
+
+    .responsive-menu {
+      float: right;
+      display: block;
+      padding: 10px;
+      color: white;
+    }
+
+    .search-section {
+      display: none;
+    }
+  }
+
+  .responsive-navbar {
+    position: relative;
+    a {
+      float: none;
+      background-color: $backgroundColor;
+      display: block;
+      text-align: left;
+    }
+
+    .drop-down {
+      float: none;
+      position: relative;
+      a {
+        display: block;
+      }
+    }
+
+    .search-section {
+      display: block;  
+      float: none;
+      margin: 0px;
+
+      .search-navbar {
+        width: 100%;
+      }
+
+      .btn-search-navbar {
+        width: 100%;
+      }
+    }
+  }
+
+  .responsive-menu {
+    background-color: $backgroundColor;
+    overflow: hidden;
+    a {
+      float: right;
+      color: white;
+      padding: 14px;
+      text-decoration: none;
+      display: block;
+    }
+  }
+}
+
+
