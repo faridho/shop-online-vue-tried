@@ -1,0 +1,46 @@
+@import 'colors';
+
+.shop-card {
+  max-width: 100%;
+  margin: 5px 5px 5px 5px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  .buy-button {
+    border: none;
+    outline: none;
+    background-color: $inverse;
+    color: $default;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .buy-button:hover{
+    opacity: $opacity;
+  }
+
+  .img-shop-card {
+    max-width: 100%;
+  }
+
+  .img-shop-card:hover {
+    cursor: pointer;
+    opacity: $opacity;
+  }
+
+  .product-label {
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 50px;
+    .product {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 14px;
+      color: $inverse;
+    }
+  }
+}

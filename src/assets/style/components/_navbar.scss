@@ -1,13 +1,26 @@
 @import 'colors';
 
-.top-nav {
-  background-color: $backgroundColor;
+.navbar {
+  margin: 0px;
+}
+
+.top-navbar {
+  background-color: $default;
   overflow: hidden;
+
+  a.navbar-brand {
+    font-weight: bold;
+  }
+
+  a.navbar-brand:hover {
+    background-color: $default;
+    color: $inverse;
+  }
 
   a {
     float: left;
     display: block;
-    color: $color;
+    color: $inverse;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -15,13 +28,13 @@
   }
   
   a:hover {
-    background-color: $hover;
-    color: $color;
+    background-color: $primary;
+    color: $default;
   }
 
   a.active {
-    background-color: $active;
-    color: $color;
+    background-color: $primary;
+    color: $default;
   }
 
   .search-section {
@@ -38,14 +51,14 @@
     .btn-search-navbar {
       padding: 6px;
       border: none;
-      color: white;
+      color: $default;
       font-size: 17px;
-      opacity: $btnOpacity;
-      background-color: $buttonColor;
+      background-color: $primary;
     }
 
     .btn-search-navbar:hover {
-      opacity: $btnOpacityHover;
+      opacity: $opacity;
+      cursor: pointer;
     }
   }
 }
@@ -59,13 +72,13 @@
     font-size: 17px;
     border: none;
     outline: none;
-    color: $color;
+    color: $inverse;
     padding: 14px 16px;
-    background-color: $backgroundColor;
+    background-color: $default;
   }
 
   a:hover {
-    background-color: $hover;
+    background-color: $primary;
     cursor: pointer;
   }
 }
@@ -80,16 +93,16 @@
 
   a {
     float: none;
-    color: black;
+    color: $inverse;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    background-color: white;
+    background-color: $default;
     text-align: left;
   }
 
   a:hover {
-    background-color: $hover;
+    background-color: $primary;
   }
 }
 
@@ -104,8 +117,8 @@
 }
 
 @media screen and (max-width: 600px) {
-  .top-nav {
-    background-color: $backgroundColor;
+  .top-navbar {
+    background-color: $default;
     overflow: hidden;
     a {
       display: none;
@@ -115,7 +128,7 @@
       float: right;
       display: block;
       padding: 10px;
-      color: white;
+      color: $inverse;
     }
 
     .search-section {
@@ -125,9 +138,14 @@
 
   .responsive-navbar {
     position: relative;
+
+    a.navbar-brand {
+      display: none;
+    }
+
     a {
       float: none;
-      background-color: $backgroundColor;
+      background-color: $default;
       display: block;
       text-align: left;
     }
@@ -156,14 +174,24 @@
   }
 
   .responsive-menu {
-    background-color: $backgroundColor;
+    background-color: $default;
     overflow: hidden;
+
+    a.navbar-brand {
+      float: left;
+    }
+
     a {
       float: right;
-      color: white;
+      color: $inverse;
       padding: 14px;
       text-decoration: none;
       display: block;
+    }
+
+    .icon-menu {
+      width: 20px;
+      height: auto;
     }
   }
 }

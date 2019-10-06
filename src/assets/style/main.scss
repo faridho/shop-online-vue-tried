@@ -1,7 +1,118 @@
 @import url('https://fonts.googleapis.com/css?family=Manjari&display=swap');
+@import './components/all';
 
-#app {
-  font-family: Manjari
+body {
+  margin: 0px;
+  font-family: Manjari;
+}
+.container {
+  margin: 0px 100px 0px 100px;
+
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .column-card-shop {
+    float: left;
+    width: 25%;
+  }
+
+  .title-shop {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    h2 {
+      width: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      text-align: center;
+      border-bottom: 1px solid $inverse;
+      line-height: 0.1em;
+      margin: 10px 0px 20px;
+    }
+
+    h2 span {
+      background-color: white;
+      padding: 0 10px;
+    }
+  }
+
+  .load-more {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+
+    .load-more-button {
+      background-color: $inverse;
+      padding: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      color: $default;
+      border: none;
+      outline: none; 
+    }
+
+    .load-more-button:hover {
+      cursor: pointer;
+      opacity: $opacity;
+    }
+  }
+
+  .bread-crumb {
+    margin-top: 8px;
+    padding: 5px;
+
+    a {
+      float: right;
+      padding: 5px;
+      display: block;
+      color: $inverse;
+      text-decoration: none;
+    }
+
+    .icon {
+      width: 16px;
+      height: auto;
+      padding-right: 3px;
+    }
+  }
+} 
+
+.footer {
+  background-color: $inverse;
+  min-height: 300px;
+  position: relative;
+  
+  .social-media-section {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .icon {
+      width: 20px;
+      height: auto;
+      padding: 5px;
+    }
+  }
+
+  .end-sub-section{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    text-align: center;
+    color: $default;
+  }
 }
 
-@import './components/all';
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 0px;
+    .column-card-shop {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import 'colors';
+
+.hero-image {
+  margin-top: 10px;
+  background-image: url("/img/hero-image.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  min-height: 470px;
+  border-radius: 5px 5px 5px 5px;
+  
+  .hero-text {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 26px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: $default;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-button {
+    background-color: $default;
+    color: $inverse;
+    font-size: 17px;
+    padding: 12px;
+    border: none;
+    outline: none;
+  }
+
+  .hero-button:hover {
+    background-color: $inverse;
+    color: $default;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero-image {
+    margin-top: 0px;
+    border-radius: 0px;
+  }
+}
