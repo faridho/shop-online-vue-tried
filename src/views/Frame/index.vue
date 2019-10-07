@@ -3,7 +3,7 @@
     <div class="navbar">
       <div class="responsive-menu">
         <a href="" class="navbar-brand">SAM FIRDAUS FASHION</a>
-        <a href="javascript:void(0);" @click="toogleMenu"><img src="/img/icons/menu-burger.svg" class="icon-menu"  /></a>
+        <a href="javascript:void(0);" @click="toogleMenu"><img src="/img/icons/menu-burger.svg" class="icon-menu" /></a>
       </div>
       <div class="top-navbar" v-bind:class="[responsiveActive ? '': 'responsive-navbar']">
         <a href="" class="navbar-brand">SAM FIRDAUS FASHION</a>
@@ -63,7 +63,7 @@
 
         <div class="column-card-shop">
           <div class="shop-card">
-            <img src="/img/shop/product-1.jpg" class="img-shop-card"/>
+            <img src="/img/shop/product-1.jpg" class="img-shop-card" />
             <button class="buy-button">TAKE ME OUT</button>
 
             <div class="product-label">
@@ -75,7 +75,7 @@
 
         <div class="column-card-shop">
           <div class="shop-card">
-            <img src="/img/shop/product-2.jpg" class="img-shop-card"/>
+            <img src="/img/shop/product-2.jpg" class="img-shop-card" />
             <button class="buy-button">TAKE ME OUT</button>
 
             <div class="product-label">
@@ -87,7 +87,7 @@
 
         <div class="column-card-shop">
           <div class="shop-card">
-            <img src="/img/shop/product-3.jpg" class="img-shop-card"/>
+            <img src="/img/shop/product-3.jpg" class="img-shop-card" />
             <button class="buy-button">TAKE ME OUT</button>
 
             <div class="product-label">
@@ -99,7 +99,7 @@
 
         <div class="column-card-shop">
           <div class="shop-card">
-            <img src="/img/shop/product-4.jpg" class="img-shop-card"/>
+            <img src="/img/shop/product-4.jpg" class="img-shop-card" />
             <button class="buy-button">TAKE ME OUT</button>
 
             <div class="product-label">
@@ -111,7 +111,7 @@
 
         <div class="column-card-shop">
           <div class="shop-card">
-            <img src="/img/shop/product-4.jpg" class="img-shop-card"/>
+            <img src="/img/shop/product-4.jpg" class="img-shop-card" />
             <button class="buy-button">TAKE ME OUT</button>
 
             <div class="product-label">
@@ -123,7 +123,7 @@
 
         <div class="column-card-shop">
           <div class="shop-card">
-            <img src="/img/shop/product-3.jpg" class="img-shop-card"/>
+            <img src="/img/shop/product-3.jpg" class="img-shop-card" />
             <button class="buy-button">TAKE ME OUT</button>
 
             <div class="product-label">
@@ -135,7 +135,7 @@
 
         <div class="column-card-shop">
           <div class="shop-card">
-            <img src="/img/shop/product-2.jpg" class="img-shop-card"/>
+            <img src="/img/shop/product-2.jpg" class="img-shop-card" />
             <button class="buy-button">TAKE ME OUT</button>
 
             <div class="product-label">
@@ -147,7 +147,7 @@
 
         <div class="column-card-shop">
           <div class="shop-card">
-            <img src="/img/shop/product-3.jpg" class="img-shop-card"/>
+            <img src="/img/shop/product-3.jpg" class="img-shop-card" />
             <button class="buy-button">TAKE ME OUT</button>
 
             <div class="product-label">
@@ -156,7 +156,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
 
@@ -184,10 +184,85 @@
 
     <div class="modal-login" v-show="modal">
       <div class="modal-content">
-       <span class="close" @click="close">&times;</span>
+
+        <div v-show="loginSection">
+          <div class="modal-header">
+            <div class="title">
+              <p>Account Sign In</p>
+            </div>
+            <span class="close" @click="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="main-form-login">
+              <div class="form-label">
+                Email
+              </div>
+              <input type="text" class="form-fill" />
+              <div class="form-placeholder">
+                Input Email Address
+              </div>
+            </div>
+
+            <div class="main-form-login">
+              <div class="form-label">
+                Password
+              </div>
+              <input type="password" class="form-fill" />
+              <div class="form-placeholder">
+                Input Password
+              </div>
+            </div>
+            <button class="button-login">LOGIN</button>
+            <hr>
+            <button class="button-join" @click="join">JOIN US</button>
+          </div>
+        </div>
+
+        <div v-show="joinSection">
+          <div class="modal-header">
+            <div class="title">
+              <p>Create An Account</p>
+            </div>
+            <span class="close" @click="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="main-form-login">
+              <div class="form-label">
+                Email
+              </div>
+              <input type="text" class="form-fill" />
+              <div class="form-placeholder">
+                Input Email Address
+              </div>
+            </div>
+
+            <div class="main-form-login">
+              <div class="form-label">
+                Password
+              </div>
+              <input type="password" class="form-fill" />
+              <div class="form-placeholder">
+                Input Password
+              </div>
+            </div>
+
+            <div class="main-form-login">
+              <div class="form-label">
+                Confirm Password
+              </div>
+              <input type="password" class="form-fill" />
+              <div class="form-placeholder">
+                Input Confirm Password
+              </div>
+            </div>
+            <button class="button-login">JOIN</button>
+            <hr>
+            <button class="button-join" @click="backLogin">BACK TO LOGIN</button>
+          </div>
+        </div>
       </div>
     </div>
-    
+
   </div>
 </template>
 <script>
@@ -196,6 +271,8 @@
       responsiveActive: true,
       heroTitle: 'WARDROBE ESSENTIALS FROM IDR 149,900',
       modal: false,
+      loginSection: true,
+      joinSection: false,
     }),
 
     methods: {
@@ -213,6 +290,16 @@
 
       close() {
         this.modal = false;
+      },
+
+      join() {
+        this.loginSection = false;
+        this.joinSection = true;
+      },
+
+      backLogin() {
+        this.loginSection = true;
+        this.joinSection = false;
       }
     }
   }
