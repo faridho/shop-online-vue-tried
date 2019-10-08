@@ -33,7 +33,7 @@
     <div class="container">
       <div class="row">
         <div class="bread-crumb">
-          <a href="">Shopping Bag (0)</a>
+          <a href="" @mouseover="chartHover = true" @mousedown="chartHover = false">Shopping Bag (0)</a>
           <a href="javascript:void(0)" @click="login">Sign In/Join</a>
         </div>
       </div>
@@ -263,6 +263,18 @@
       </div>
     </div>
 
+    <div class="chart" v-if="chartHover">
+      <span class="close-chart" @click="chartHover = false">&times;</span>
+      <div class="title-chart">
+        <h2>Shopping bag is empty</h2>
+      </div>
+      <div class="order-chart">
+        <div class="order-label">ORDER VALUE</div>
+        <div class="order-value">IDR 299.999</div>
+      </div>
+      <a href="" class="detail-chart">View Chart</a>
+    </div>
+
   </div>
 </template>
 <script>
@@ -273,6 +285,7 @@
       modal: false,
       loginSection: true,
       joinSection: false,
+      chartHover: false,
     }),
 
     methods: {
