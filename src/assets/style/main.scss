@@ -4,38 +4,15 @@
 body {
   margin: 0px;
   font-family: Manjari;
+  height: 100%;
 }
 .container {
   margin: 0px 100px 0px 100px;
-
+  
   .row::after {
     content: "";
     display: table;
     clear: both;
-  }
-
-  .column-card-shop {
-    float: left;
-    width: 25%;
-  }
-
-  .title-shop {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    h2 {
-      width: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      text-align: center;
-      border-bottom: 1px solid $inverse;
-      line-height: 0.1em;
-      margin: 10px 0px 20px;
-    }
-
-    h2 span {
-      background-color: white;
-      padding: 0 10px;
-    }
   }
 
   .load-more {
@@ -84,8 +61,29 @@ body {
   }
 } 
 
+.title-shop {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  h2 {
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid $inverse;
+    line-height: 0.1em;
+    margin: 10px 0px 20px;
+    text-transform: uppercase;
+  }
+
+  h2 span {
+    background-color: white;
+    padding: 0 10px;
+  }
+}
+
 .footer {
   background-color: $inverse;
+  bottom: 0px;
   min-height: 300px;
   position: relative;
   
@@ -115,8 +113,5 @@ body {
 @media screen and (max-width: 600px) {
   .container {
     margin: 0px;
-    .column-card-shop {
-      width: 100%;
-    }
   }
 }

@@ -1,0 +1,14 @@
+@import 'colors';
+
+.column-card-shop {
+  float: left;
+  width: 25%;
+}
+
+@media screen and (max-width: 600px) {
+  
+  .column-card-shop {
+    width: 50%;
+  }
+
+}

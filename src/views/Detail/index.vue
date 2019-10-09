@@ -7,7 +7,7 @@
       </div>
       <div class="top-navbar" v-bind:class="[responsiveActive ? '': 'responsive-navbar']">
         <a href="" class="navbar-brand">FARIDHO'S OUTLET</a>
-        <a href="" class="active">Home</a>
+        <a href="">Home</a>
         <div class="drop-down">
           <a href="">Dress</a>
           <div class="drop-down-content">
@@ -39,137 +39,45 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container detail">
       <div class="row">
-        <div class="hero-image">
-          <div class="hero-text">
-            <h1>{{ heroTitle }}</h1>
-            <button class="hero-button">SHOP NOW</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="title-shop">
-          <h2><span>WHICH ONE WILL BE YOURS</span></h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-
-        <div class="column-card-shop">
-          <div class="shop-card">
-            <img v-if="frontImg" @mouseover="frontImg = false; backImg = true;" @mouseleave="frontImg = true; backImg = false;" src="/img/shop/product-1.jpg" class="img-shop-card" />
-            <img v-if="backImg" @mouseleave="frontImg = true; backImg = false;" @mouseover="frontImg = false; backImg = true;" src="/img/shop/product-2.jpg" class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
-            <div class="product-label">
-              <div clas="product">Printed Hoodie Hoop </div>
-              <div class="price">IDR 299.900</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="column-card-shop">
+        <div class="column-detail-shop">
           <div class="shop-card">
             <img src="/img/shop/product-2.jpg" class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
-            <div class="product-label">
-              <div clas="product">Printed Hoodie Hoop</div>
-              <div class="price">IDR 299.900</div>
-            </div>
           </div>
         </div>
 
-        <div class="column-card-shop">
-          <div class="shop-card">
-            <img src="/img/shop/product-3.jpg" class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
-            <div class="product-label">
-              <div clas="product">Printed Hoodie Hoop</div>
-              <div class="price">IDR 299.900</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="column-card-shop">
+        <div class="column-detail-shop">
           <div class="shop-card">
             <img src="/img/shop/product-4.jpg" class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
-            <div class="product-label">
-              <div clas="product">Printed Hoodie Hoop</div>
-              <div class="price">IDR 299.900</div>
-            </div>
           </div>
         </div>
 
-        <div class="column-card-shop">
-          <div class="shop-card">
-            <img src="/img/shop/product-4.jpg" class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
-            <div class="product-label">
-              <div clas="product">Printed Hoodie Hoop</div>
-              <div class="price">IDR 299.900</div>
+        <div class="column-detail-shop">
+          <div class="detail-select">
+            <div class="detail-love">
+              <img v-if="like" src="/img/icons/like.svg" class="img-love" @click="liked"/>
+              <img v-if="unlike" src="/img/icons/liked.svg" class="img-love" @click="unliked"/>
+            </div>
+            <div class="detail-over">
+              <a href="" class="detail-category">Dress</a>
+              <h2 class="detail-description">Treggings Pockets</h2>
+              <p class="detail-price">IDR 299.900</p>
+            </div>
+            <div class="detail-form">
+              Size:
+              <input type="radio" name="radio" checked> S
+              <input type="radio" name="radio"> M 
+              <input type="radio" name="radio"> L
+            </div>
+            <div class="detail-add-chart">
+              ADD TO CHART
             </div>
           </div>
         </div>
-
-        <div class="column-card-shop">
-          <div class="shop-card">
-            <img src="/img/shop/product-3.jpg" class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
-            <div class="product-label">
-              <div clas="product">Printed Hoodie Hoop</div>
-              <div class="price">IDR 299.900</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="column-card-shop">
-          <div class="shop-card">
-            <img src="/img/shop/product-2.jpg" class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
-            <div class="product-label">
-              <div clas="product">Printed Hoodie Hoop</div>
-              <div class="price">IDR 299.900</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="column-card-shop">
-          <div class="shop-card">
-            <img src="/img/shop/product-3.jpg" class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
-            <div class="product-label">
-              <div clas="product">Printed Hoodie Hoop</div>
-              <div class="price">IDR 299.900</div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="load-more">
-          <button class="load-more-button">
-            LOAD MORE PRODUCTS
-          </button>
-        </div>
-      </div>
-    </div>
 
     <div class="footer">
       <div class="social-media-section">
@@ -289,6 +197,8 @@
       loginSection: true,
       joinSection: false,
       chartHover: false,
+      like: true,
+      unlike: false
     }),
 
     methods: {
@@ -316,6 +226,16 @@
       backLogin() {
         this.loginSection = true;
         this.joinSection = false;
+      },
+
+      liked() {
+        this.like = false;
+        this.unlike = true;
+      },
+
+      unliked() {
+        this.like = true;
+        this.unlike = false;
       }
     }
   }
