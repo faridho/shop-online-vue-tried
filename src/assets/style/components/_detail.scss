@@ -4,6 +4,12 @@
   margin-top: 30px;
   float: left;
   width: 33.33%;
+}
+
+.column-detail-shop-pick {
+  margin-top: 30px;
+  float: left;
+  width: 33.33%;
 
   .detail-select {
     padding-left: 10px;
@@ -44,42 +50,43 @@
         font-family: Arial, Helvetica, sans-serif;
       }
     }
-  }
 
-  .detail-form {
-    padding: 10px;
-    margin-top: 11px;
-    width: 100%;
-    height: auto;
-    border: 1px solid $inverse;
-  }
-
-  .detail-add-chart {
-    padding: 13px 10px 10px 10px;
-    margin-top: 5px;
-    min-width: 100%;
-    min-height: auto;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    color: $default;
-    background-color: $inverse;
-    border: 1px solid $inverse;
-  }
-
-  .detail-add-chart:hover {
-    background-color: $default;
-    color: $inverse;
-    cursor: pointer;
+    .detail-form {
+      padding: 10px;
+      margin-top: 50px;
+      border: 1px solid $inverse;
+    }
+  
+    .detail-add-chart {
+      padding: 13px 10px 10px 10px;
+      margin-top: 5px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: $default;
+      background-color: $inverse;
+      border: 1px solid $inverse;
+    }
+  
+    .detail-add-chart:hover {
+      background-color: $default;
+      color: $inverse;
+      cursor: pointer;
+    }
   }
 }
 
 @media screen and (max-width: 600px) {
   .column-detail-shop {
-    width: 100%;
+    width: 50%;
   }
 
-  .detail-select {
+  .column-detail-shop-pick {
     width: 100%;
+
+    .detail-select {
+      width: 95%;
+      margin-bottom: 20px;;
+    }
   }
 }

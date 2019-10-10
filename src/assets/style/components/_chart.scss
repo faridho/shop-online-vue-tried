@@ -56,8 +56,60 @@
 
 }
 
+
+
 @media screen and (max-width: 600px) {
   .chart {
     display: none;
+  }
+
+  .chart-full {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $default;
+    
+    .close-chart {
+      font-size: 32px;
+      float: right;
+      padding: 10px;
+    }
+    .header-chart {
+      padding: 10px;
+      .title-chart {
+        font-size: 24px;
+        font-family: Arial, Helvetica, sans-serif;;
+      }
+    }
+
+    .content-chart {
+      .card-item {
+        margin: 10px;
+        padding: 5px;
+        height: 110px;
+
+        .card-item-left {
+          float: left;
+          .img-item {
+            margin: 0;
+            width: 120px;
+            height: auto;
+          }
+        }
+
+        .card-item-right {
+          float: left;
+          padding-left: 10px;
+          .title-item {
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
   }
 }

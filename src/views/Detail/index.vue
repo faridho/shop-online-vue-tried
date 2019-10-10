@@ -33,7 +33,12 @@
     <div class="container">
       <div class="row">
         <div class="bread-crumb">
-          <a href="" @mouseover="chartHover = true" @mousedown="chartHover = false">Shopping Bag (0)</a>
+          <a href="javascript:void(0)" 
+            @click="showChartFull" 
+            @mouseover="chartHover = true" 
+            @mousedown="chartHover = false">
+            Shopping Bag (0)
+          </a>
           <a href="javascript:void(0)" @click="login">Sign In/Join</a>
         </div>
       </div>
@@ -53,7 +58,7 @@
           </div>
         </div>
 
-        <div class="column-detail-shop">
+        <div class="column-detail-shop-pick">
           <div class="detail-select">
             <div class="detail-love">
               <img v-if="like" src="/img/icons/like.svg" class="img-love" @click="liked"/>
@@ -184,6 +189,23 @@
       <a href="" class="detail-chart">View Chart</a>
     </div>
 
+    <div v-if="chartFull" class="chart-full">
+      <span @click="closeChart" class="close-chart">&times;</span>
+      <div class="header-chart">
+        <div class="title-chart">Shopping Bag</div>
+      </div>
+      <div class="content-chart">
+        <div class="card-item">
+          <div class="card-item-left">
+            <img src="/img/shop/detail-product-1.png" class="img-item">
+          </div>
+          <div class="card-item-right">
+            <span class="title-item">(2) Hoddie Hop</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 <script>
@@ -198,7 +220,8 @@
       joinSection: false,
       chartHover: false,
       like: true,
-      unlike: false
+      unlike: false,
+      chartFull: false
     }),
 
     methods: {
@@ -208,6 +231,14 @@
         } else {
           this.responsiveActive = true;
         }
+      },
+
+      showChartFull() {
+        this.chartFull = true;
+      },
+
+      closeChart() {
+        this.chartFull = false;
       },
 
       login() {
