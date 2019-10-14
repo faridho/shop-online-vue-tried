@@ -190,19 +190,51 @@
     </div>
 
     <div v-if="chartFull" class="chart-full">
-      <span @click="closeChart" class="close-chart">&times;</span>
-      <div class="header-chart">
-        <div class="title-chart">Shopping Bag</div>
-      </div>
       <div class="content-chart">
+        <span @click="closeChart" class="close-chart">&times;</span>
+        <div class="header-chart">
+          <div class="title-chart">Shopping Bag</div>
+        </div>
         <div class="card-item">
           <div class="card-item-left">
             <img src="/img/shop/detail-product-1.png" class="img-item">
           </div>
           <div class="card-item-right">
-            <span class="title-item">(2) Hoddie Hop</span>
+            <div class="title-item">(2) Hoddie Hop</div>
+            <div class="title-price">IDR 299.900</div>
+            <div class="cart-action">
+              <a href="" class="cart-remove">Return</a>
+            </div>
           </div>
         </div>
+
+        <div class="card-item">
+          <div class="card-item-left">
+            <img src="/img/shop/detail-product-1.png" class="img-item">
+          </div>
+          <div class="card-item-right">
+            <div class="title-item">(2) Hoddie Hop</div>
+            <div class="title-price">IDR 299.900</div>
+            <div class="cart-action">
+              <a href="" class="cart-remove">Return</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item">
+          <div class="card-item-left">
+            <img src="/img/shop/detail-product-1.png" class="img-item">
+          </div>
+          <div class="card-item-right">
+            <div class="title-item">(2) Hoddie Hop</div>
+            <div class="title-price">IDR 299.900</div>
+            <div class="cart-action">
+              <a href="" class="cart-remove">Return</a>
+            </div>
+          </div>
+        </div>
+        <button class="button-checkout">CHECK OUT</button>
+
       </div>
     </div>
 
