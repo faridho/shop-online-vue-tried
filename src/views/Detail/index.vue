@@ -190,10 +190,10 @@
     </div>
 
     <div v-if="chartFull" class="chart-full">
-      <div class="content-chart">
+      <div class="content-chart" v-if="checkoutLayer">
         <span @click="closeChart" class="close-chart">&times;</span>
         <div class="header-chart">
-          <div class="title-chart">Shopping Bag</div>
+          <div class="title-chart">{{ titleCart }}</div>
         </div>
         <div class="card-item">
           <div class="card-item-left">
@@ -233,8 +233,29 @@
             </div>
           </div>
         </div>
-        <button class="button-checkout">CHECK OUT</button>
+        <button @click="checkout" class="button-checkout">CHECK OUT</button>
 
+      </div>
+
+      <div class="content-chart" v-if="requestSendLayer">
+        <span @click="closeChart" class="close-chart">&times;</span>
+        <div class="header-chart">
+          <div class="title-chart">{{ titleCart }}</div>
+        </div>
+        
+        <div class="form-cart">
+          <div class="fill-form">
+            <input type="text" class="text-box-cart" placeholder="Full Name"/>
+          </div>
+          <div class="fill-form">
+            <textarea class="textarea-cart" placeholder="Address"></textarea>
+          </div>
+        </div>
+
+        <div class="button-group-chart">
+          <button @click="checkoutCancel" class="button-checkout-cancel">BACK</button>
+          <button @click="checkout" class="button-checkout-send">CHECK OUT</button>
+        </div>
       </div>
     </div>
 
@@ -253,7 +274,10 @@
       chartHover: false,
       like: true,
       unlike: false,
-      chartFull: false
+      chartFull: false,
+      titleCart: 'Shopping Bag',
+      checkoutLayer: true,
+      requestSendLayer: false,
     }),
 
     methods: {
@@ -299,6 +323,18 @@
       unliked() {
         this.like = true;
         this.unlike = false;
+      },
+
+      checkout() {
+        this.checkoutLayer = false;
+        this.requestSendLayer = true;
+        this.titleCart = 'Checkout';
+      },
+
+      checkoutCancel() {
+        this.checkoutLayer = true;
+        this.requestSendLayer = false;
+        this.titleCart = 'Shopping Bag';
       }
     }
   }
