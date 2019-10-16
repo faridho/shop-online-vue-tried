@@ -1,0 +1,53 @@
+@import 'colors';
+
+.avatar-section {
+  float:left;
+  width: 28%;
+  margin-bottom: 50px;
+
+  .avatar-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+
+    .avatar-img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-detail {
+      color: $inverse;
+      font-size: 14px;
+    }
+
+    .button-avatar {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: $default;
+      background-color: $inverse;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .button-avatar:hover {
+      cursor: pointer;
+      background-color: $default;
+      color: $inverse;
+      outline: 1px solid $inverse;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .avatar-section {
+    padding: 5px;
+    width: 97%;
+  }
+}
+

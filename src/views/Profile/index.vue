@@ -33,12 +33,7 @@
     <div class="container">
       <div class="row">
         <div class="bread-crumb">
-          <a href="javascript:void(0)" 
-            @click="showChartFull" 
-            @mouseover="chartHover = true" 
-            @mousedown="chartHover = false">
-            Shopping Bag (0)
-          </a>
+          <a href="" @mouseover="chartHover = true" @mousedown="chartHover = false">Shopping Bag (0)</a>
           <a href="javascript:void(0)" @click="login">Sign In/Join</a>
         </div>
       </div>
@@ -47,50 +42,25 @@
     <div class="container">
       <div class="row">
         <div class="title-shop">
-          <h2><span>PRODUCT DETAIL</span></h2>
+          <h2><span>ACCOUNT</span></h2>
         </div>
       </div>
     </div>
 
-    <div class="container detail">
+    <div class="container">
       <div class="row">
-        <div class="column-detail-shop">
-          <div class="shop-card">
-            <img src="/img/shop/product-2.jpg" class="img-shop-card" />
-          </div>
-        </div>
-
-        <div class="column-detail-shop">
-          <div class="shop-card">
-            <img src="/img/shop/product-4.jpg" class="img-shop-card" />
-          </div>
-        </div>
-
-        <div class="column-detail-shop-pick">
-          <div class="detail-select">
-            <div class="detail-love">
-              <img v-if="like" src="/img/icons/like.svg" class="img-love" @click="liked"/>
-              <img v-if="unlike" src="/img/icons/liked.svg" class="img-love" @click="unliked"/>
-            </div>
-            <div class="detail-over">
-              <a href="" class="detail-category">Dress</a>
-              <h2 class="detail-description">Treggings Pockets</h2>
-              <p class="detail-price">IDR 299.900</p>
-            </div>
-            <div class="detail-form">
-              Size:
-              <input type="radio" name="radio" checked> S
-              <input type="radio" name="radio"> M 
-              <input type="radio" name="radio"> L
-            </div>
-            <div class="detail-add-chart">
-              ADD TO CHART
-            </div>
+        <div class="avatar-section">
+          <div class="avatar-card">
+            <img src="/img/avatar.png" class="avatar-img"/>
+            <h2>FARIDHO</h2>
+            <p class="avatar-detail">
+              Jl Anggrek Cendrawasih 8A, Kemanggisan, Jakarta Barat
+            </p>
+            <button class="button-avatar">EDIT PROFILE</button>
           </div>
         </div>
       </div>
     </div>
-
 
     <div class="footer">
       <div class="social-media-section">
@@ -197,79 +167,6 @@
       <a href="" class="detail-chart">View Chart</a>
     </div>
 
-    <div v-if="chartFull" class="chart-full">
-      <div class="content-chart" v-if="checkoutLayer">
-        <span @click="closeChart" class="close-chart">&times;</span>
-        <div class="header-chart">
-          <div class="title-chart">{{ titleCart }}</div>
-        </div>
-        <div class="card-item">
-          <div class="card-item-left">
-            <img src="/img/shop/detail-product-1.png" class="img-item">
-          </div>
-          <div class="card-item-right">
-            <div class="title-item">(2) Hoddie Hop</div>
-            <div class="title-price">IDR 299.900</div>
-            <div class="cart-action">
-              <a href="" class="cart-remove">Return</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-item">
-          <div class="card-item-left">
-            <img src="/img/shop/detail-product-1.png" class="img-item">
-          </div>
-          <div class="card-item-right">
-            <div class="title-item">(2) Hoddie Hop</div>
-            <div class="title-price">IDR 299.900</div>
-            <div class="cart-action">
-              <a href="" class="cart-remove">Return</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-item">
-          <div class="card-item-left">
-            <img src="/img/shop/detail-product-1.png" class="img-item">
-          </div>
-          <div class="card-item-right">
-            <div class="title-item">(2) Hoddie Hop</div>
-            <div class="title-price">IDR 299.900</div>
-            <div class="cart-action">
-              <a href="" class="cart-remove">Return</a>
-            </div>
-          </div>
-        </div>
-        <button @click="checkout" class="button-checkout">CHECK OUT</button>
-
-      </div>
-
-      <div class="content-chart" v-if="requestSendLayer">
-        <span @click="closeChart" class="close-chart">&times;</span>
-        <div class="header-chart">
-          <div class="title-chart">{{ titleCart }}</div>
-        </div>
-        
-        <div class="form-cart">
-          <div class="fill-form">
-            <input type="text" class="text-box-cart" placeholder="Full Name"/>
-          </div>
-          <div class="fill-form">
-            <input type="checkbox" /> Use address your registered
-          </div>
-          <div class="fill-form">
-            <textarea class="textarea-cart" placeholder="Address"></textarea>
-          </div>
-        </div>
-
-        <div class="button-group-chart">
-          <button @click="checkoutCancel" class="button-checkout-cancel">BACK</button>
-          <button @click="checkout" class="button-checkout-send">CHECK OUT</button>
-        </div>
-      </div>
-    </div>
-
   </div>
 </template>
 <script>
@@ -283,12 +180,6 @@
       loginSection: true,
       joinSection: false,
       chartHover: false,
-      like: true,
-      unlike: false,
-      chartFull: false,
-      titleCart: 'Shopping Bag',
-      checkoutLayer: true,
-      requestSendLayer: false,
     }),
 
     methods: {
@@ -298,14 +189,6 @@
         } else {
           this.responsiveActive = true;
         }
-      },
-
-      showChartFull() {
-        this.chartFull = true;
-      },
-
-      closeChart() {
-        this.chartFull = false;
       },
 
       login() {
@@ -324,28 +207,6 @@
       backLogin() {
         this.loginSection = true;
         this.joinSection = false;
-      },
-
-      liked() {
-        this.like = false;
-        this.unlike = true;
-      },
-
-      unliked() {
-        this.like = true;
-        this.unlike = false;
-      },
-
-      checkout() {
-        this.checkoutLayer = false;
-        this.requestSendLayer = true;
-        this.titleCart = 'Checkout';
-      },
-
-      checkoutCancel() {
-        this.checkoutLayer = true;
-        this.requestSendLayer = false;
-        this.titleCart = 'Shopping Bag';
       }
     }
   }
