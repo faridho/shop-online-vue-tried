@@ -49,9 +49,10 @@
 
     <div class="container">
       <div class="row">
+
         <div class="avatar-section">
           <div class="avatar-card">
-            <img src="/img/avatar.png" class="avatar-img"/>
+            <img src="/img/avatar.png" class="avatar-img" />
             <h2>FARIDHO</h2>
             <p class="avatar-detail">
               Jl Anggrek Cendrawasih 8A, Kemanggisan, Jakarta Barat
@@ -59,6 +60,66 @@
             <button class="button-avatar">EDIT PROFILE</button>
           </div>
         </div>
+
+        <div class="profil-content-section">
+          <div class="tab">
+            <div v-for="(tab, index) in tabs" :key="index">
+              <a href="javascript:void();" @click="openTab(index)">{{ tab.title }}</a>
+            </div>
+          </div>
+
+          <div v-if="myOrder" class="tab-content">
+            <div class="tab-content-card">
+
+              <div class="card-item">
+                <div class="card-item-left">
+                  <img src="/img/shop/detail-product-1.png" class="img-item">
+                </div>
+                <div class="card-item-right">
+                  <div class="title-item">(2) Hoddie Hop</div>
+                  <div class="title-price">IDR 299.900</div>
+                </div>
+              </div>
+
+              <div class="card-item">
+                <div class="card-item-left">
+                  <img src="/img/shop/detail-product-1.png" class="img-item">
+                </div>
+                <div class="card-item-right">
+                  <div class="title-item">(2) Hoddie Hop</div>
+                  <div class="title-price">IDR 299.900</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div v-if="myWishList" id="my-wishlist" class="tab-content">
+            <div class="tab-content-card">
+              <div class="card-item">
+                <div class="card-item-left">
+                  <img src="/img/shop/detail-product-1.png" class="img-item">
+                </div>
+                <div class="card-item-right">
+                  <div class="title-item">(2) Hoddie Hops</div>
+                  <div class="title-price">IDR 299.900</div>
+                </div>
+              </div>
+
+              <div class="card-item">
+                <div class="card-item-left">
+                  <img src="/img/shop/detail-product-1.png" class="img-item">
+                </div>
+                <div class="card-item-right">
+                  <div class="title-item">(2) Hoddie Hops</div>
+                  <div class="title-price">IDR 299.900</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -180,6 +241,17 @@
       loginSection: true,
       joinSection: false,
       chartHover: false,
+      tabs: [
+        {
+          'title': 'My Orders'
+        },
+        {
+          'title': 'My Wish List'
+        }
+      ],
+
+      myOrder: true,
+      myWishList: false,
     }),
 
     methods: {
@@ -207,6 +279,16 @@
       backLogin() {
         this.loginSection = true;
         this.joinSection = false;
+      },
+
+      openTab(index) {
+        if (index == 0) {
+          this.myOrder = true;
+          this.myWishList = false;
+        } else {
+          this.myOrder = false;
+          this.myWishList = true;
+        }
       }
     }
   }

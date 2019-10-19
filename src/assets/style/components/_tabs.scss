@@ -1,0 +1,92 @@
+@import 'colors';
+@import 'chart';
+
+$active-map: (
+  "order" $inverse $default,
+  "wish" $inverse $default
+);
+
+.tab {
+  margin-left: 10px;
+  
+  a {
+    background-color: $default;
+    float: left;
+    color: $inverse;
+    text-decoration: none;
+    padding: 9px 22px;
+  }
+
+  a:hover {
+    background-color: $inverse;
+    color: $default;
+  }
+
+  @each $status, $backgound, $color in $active-map {
+    a.active-#{$status} {
+      background-color: $backgound;
+      color: $default;
+    }
+  }
+}
+
+.tab-content {
+  padding: 10px;
+  margin-top: 40px;
+  animation: fadeEffect 1s;
+
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  .tab-content-card {
+    width: 100%;
+    
+    .card-item {
+      padding: 5px;
+      height: 110px;
+
+      .card-item-left {
+        float: left;
+        .img-item {
+          margin: 0;
+          width: 120px;
+          height: auto;
+        }
+      }
+
+      .card-item-right {
+        float: left;
+        padding-left: 10px;
+        .title-item {
+          text-align: left;
+          font-size: 16px;
+        }
+
+        .title-price {
+          margin-top: 5px;
+          text-align: left;
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .cart-action {
+          margin-top: 55px;
+
+          a.cart-remove {
+            font-size: 11px;
+            text-decoration: none;
+            color: #bdc3c7;
+          }
+
+          a.cart-remove:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  
+}

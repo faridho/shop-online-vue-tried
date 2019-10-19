@@ -1,9 +1,12 @@
 @import 'colors';
 
-.avatar-section {
+.profil-main-section {
   float:left;
-  width: 28%;
   margin-bottom: 50px;
+}
+.avatar-section {
+  @extend .profil-main-section;
+  width: 28%;
 
   .avatar-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -42,6 +45,11 @@
       outline: 1px solid $inverse;
     }
   }
+}
+
+.profil-content-section {
+  @extend .profil-main-section;
+  width: 72%;
 }
 
 @media screen and (max-width: 600px) {
