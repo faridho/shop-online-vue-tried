@@ -4,6 +4,9 @@ import Frame from './views/Frame'
 import Detail from './views/Detail'
 import Profile from './views/Profile'
 
+
+import Home from './views/Main'
+
 Vue.use(Router)
 
 export default new Router({
@@ -26,6 +29,12 @@ export default new Router({
       path: '/profile',
       name: 'profile',
       component: Profile
+    },
+
+    {
+      path: '/',
+      name: 'home',
+      component: Home
     }
     
   ]
