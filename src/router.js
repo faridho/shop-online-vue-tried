@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Frame from './views/Frame'
 import Detail from './views/Detail'
 import Profile from './views/Profile'
+import ProductDetail from './views/Product'
 
 
 import Home from './views/Main'
@@ -35,6 +36,12 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+
+    {
+      path: '/product/:id',
+      name: 'ProductDetail',
+      component: ProductDetail
     }
     
   ]

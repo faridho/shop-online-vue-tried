@@ -13,9 +13,17 @@
 
         <div class="column-card-shop" v-for="(product, index) in products" :key="index">
           <div class="shop-card">
-            <img :src=product.thumbnail class="img-shop-card" />
-            <button class="buy-button">TAKE ME OUT</button>
-
+              <router-link 
+                :to="{
+                  name: 'ProductDetail',
+                  params: {
+                    id: product.id
+                  }
+                }"
+              >
+              <img :src=product.thumbnail class="img-shop-card" />
+              <button class="buy-button">TAKE ME OUT</button>
+              </router-link> 
             <div class="product-label">
               <div clas="product">{{ product.name }}</div>
               <div class="price">IDR {{ product.price | numeral }}</div>
@@ -74,6 +82,7 @@
 
         for(let product of products) {
           this.products.push({
+            id: product.id,
             thumbnail: product.thumbnail,
             name: product.name,
             price: product.price
