@@ -4,12 +4,15 @@
       <div class="row">
         <div class="bread-crumb">
           <a href="javascript:void(0)" 
+            v-if="getToken"
             @click="showChartFull" 
             @mouseover="chartHover = true" 
             @mousedown="chartHover = false">
             Shopping Bag (0)
           </a>
-          <a href="javascript:void(0)" @click="login">Sign In/Join</a>
+          <a href="javascript:void(0)" @click="logout" v-if="getToken">Logout</a>
+          <a href="javascript:void(0)" @click="login" v-if="!getToken">Sign In/Join</a>
+          <a href="javascript:void(0)" v-else>Hello, {{ name }}</a>
         </div>
       </div>
     </div>
@@ -25,11 +28,12 @@
             <span class="close" @click="close">&times;</span>
           </div>
           <div class="modal-body">
+            <P>{{ success }}</p>
             <div class="main-form-login">
               <div class="form-label">
                 Email
               </div>
-              <input type="text" class="form-fill" />
+              <input type="text" class="form-fill" v-model="email" />
               <div class="form-placeholder">
                 Input Email Address
               </div>
@@ -39,12 +43,12 @@
               <div class="form-label">
                 Password
               </div>
-              <input type="password" class="form-fill" />
+              <input type="password" class="form-fill" v-model="password" />
               <div class="form-placeholder">
                 Input Password
               </div>
             </div>
-            <button class="button-login">LOGIN</button>
+            <button class="button-login" @click="submitLogin">LOGIN</button>
             <hr>
             <button class="button-join" @click="join">JOIN US</button>
           </div>
@@ -58,11 +62,24 @@
             <span class="close" @click="close">&times;</span>
           </div>
           <div class="modal-body">
+            <ul v-for="(error, index) in errors" :key="index">
+              <li>{{ error }}</li>
+            </ul>
+            <div class="main-form-login">
+              <div class="form-label">
+                Name
+              </div>
+              <input type="text" class="form-fill" v-model="name" />
+              <div class="form-placeholder">
+                Input Name
+              </div>
+            </div>
+
             <div class="main-form-login">
               <div class="form-label">
                 Email
               </div>
-              <input type="text" class="form-fill" />
+              <input type="text" class="form-fill" v-model="email" />
               <div class="form-placeholder">
                 Input Email Address
               </div>
@@ -72,7 +89,7 @@
               <div class="form-label">
                 Password
               </div>
-              <input type="password" class="form-fill" />
+              <input type="password" class="form-fill" v-model="password" />
               <div class="form-placeholder">
                 Input Password
               </div>
@@ -82,12 +99,12 @@
               <div class="form-label">
                 Confirm Password
               </div>
-              <input type="password" class="form-fill" />
+              <input type="password" class="form-fill" v-model="confirmPassword" />
               <div class="form-placeholder">
                 Input Confirm Password
               </div>
             </div>
-            <button class="button-login">JOIN</button>
+            <button class="button-login" @click="register">JOIN</button>
             <hr>
             <button class="button-join" @click="backLogin">BACK TO LOGIN</button>
           </div>
@@ -171,6 +188,9 @@
   </div>
 </template>
 <script>
+  import axios from 'axios';
+  import { baseUrl } from '@/views/Plugins/url';
+
   export default {
     data: () => ({
       modal: false,
@@ -180,9 +200,74 @@
       titleCart: 'Shopping Bag',
       checkoutLayer: true,
       requestSendLayer: false,
+      baseUrl: baseUrl,
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      errors: [],
+      success: ''
     }),
 
+    computed: {
+      getToken() {
+        const token = localStorage.getItem('token');
+        if(token != null) {
+          this.name = localStorage.getItem('name');
+          return true;
+        }
+      }
+    },
+
     methods: {
+      async register() {
+        const payLoad = {
+          name: this.name, 
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.confirmPassword
+        }
+
+        const register = await axios
+        .post(this.baseUrl + 'auth/register', payLoad)
+        .then(result => result.data.response);
+
+        if(register.status == false) {
+          for (const error of register.message) {
+            this.errors.push(error);
+          }
+        } else {
+          this.success = register.message;
+          this.loginSection = true;
+          this.joinSection = false;
+        }  
+      },
+
+      async submitLogin() {
+        const payLoad = {
+          email: this.email,
+          password: this.password
+        }
+
+        const login = await axios 
+          .post(this.baseUrl + 'auth/login', payLoad)
+          .then(result => result.data.response)
+
+          if(login.status == false) {
+            alert(login.message);
+          } else {
+            localStorage.setItem('name', login.data.name);
+            localStorage.setItem('email', login.data.email);
+            localStorage.setItem('token', login.token);
+            this.modal = false;
+          }
+      },
+
+      logout() {
+        localStorage.clear();
+        alert("Logout success");
+      },
+
       login() {
         this.modal = true;
       },
