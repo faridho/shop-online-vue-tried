@@ -1,12 +1,12 @@
 <template>
   <div class="navbar">
     <div class="responsive-menu">
-      <a href="" class="navbar-brand">{{ title }}</a>
+      <router-link to="/" class="navbar-brand">{{ title }}</router-link>
       <a href="javascript:void(0);" @click="toogleMenu"><img src="/img/icons/menu-burger.svg" class="icon-menu" /></a>
     </div>
     <div class="top-navbar" v-bind:class="[responsiveActive ? '': 'responsive-navbar']">
-      <a href="" class="navbar-brand">{{ title }}</a>
-      <a href="">Home</a>
+      <router-link to="/" class="navbar-brand">{{ title }}</router-link>
+      <router-link to="/">Home</router-link>
 
       <div class="drop-down" v-for="(menu, index) in menus" :key="index">
         <a href="">{{ menu.menu }}</a>

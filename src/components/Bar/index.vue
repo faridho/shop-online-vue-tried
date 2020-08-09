@@ -4,14 +4,14 @@
       <div class="row">
         <div class="bread-crumb">
           <a href="javascript:void(0)" 
-            v-if="getToken"
+            v-if="token"
             @click="showChartFull" 
             @mouseover="chartHover = true" 
             @mousedown="chartHover = false">
             Shopping Bag (0)
           </a>
-          <a href="javascript:void(0)" @click="logout" v-if="getToken">Logout</a>
-          <a href="javascript:void(0)" @click="login" v-if="!getToken">Sign In/Join</a>
+          <a href="javascript:void(0)" @click="logout" v-if="token">Logout</a>
+          <a href="javascript:void(0)" @click="login" v-if="!token">Sign In/Join</a>
           <a href="javascript:void(0)" v-else>Hello, {{ name }}</a>
         </div>
       </div>
@@ -206,20 +206,23 @@
       password: '',
       confirmPassword: '',
       errors: [],
-      success: ''
+      success: '',
+      token: false
     }),
 
-    computed: {
-      getToken() {
-        const token = localStorage.getItem('token');
-        if(token != null) {
-          this.name = localStorage.getItem('name');
-          return true;
-        }
-      }
+    mounted() {
+      this.getToken();
     },
 
     methods: {
+      getToken() {
+        const token = localStorage.getItem('token');
+        if(token != null) {
+          this.token = true;
+          this.name = localStorage.getItem('name');
+        }
+      },
+
       async register() {
         const payLoad = {
           name: this.name, 
@@ -261,11 +264,22 @@
             localStorage.setItem('token', login.token);
             this.modal = false;
           }
+          location.reload();
       },
 
-      logout() {
+      async logout() {
+        const TOKEN = localStorage.getItem('token');
+
+        const logout = await axios 
+          .get(this.baseUrl + 'auth/logout', {
+            headers: {
+              'Authorization': 'Bearer ' + TOKEN
+            }
+          })
+          .then(result => result.data);
+        
         localStorage.clear();
-        alert("Logout success");
+        location.reload();
       },
 
       login() {
