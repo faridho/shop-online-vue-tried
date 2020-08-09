@@ -1,29 +1,15 @@
-# shop-online-frontend
+# Shop Online By Vue
+Created shop online platform by VueJS.
 
-## Project setup
+# Screenshot
+![alt_text](ss/ss.png)
+
+# Installation
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+# Run On Development
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
